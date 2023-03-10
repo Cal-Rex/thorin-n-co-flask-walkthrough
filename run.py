@@ -49,6 +49,11 @@ def contact():
     return render_template("contact.html")
 
 
+@app.route("/careers")
+def careers():
+    return render_template("careers.html")
+
+
 # -----------------------
 # __main__ is the default function that runs first in a python file.
 # if it is not otherwise specified, it will be the first thing to run

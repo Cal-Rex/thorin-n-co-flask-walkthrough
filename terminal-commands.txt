@@ -1,0 +1,17 @@
+terminal commands learned:
+
+        mkdir static | "make directory" Make a directory and call it "static"
+---------------------|--------------------------------------------------------
+           cd static | "change directory" target a directory and signify you want to change it, in this case, Static is picked.
+---------------------|--------------------------------------------------------
+         wget [link] | will download the file from a selected download url
+---------------------|--------------------------------------------------------
+                  ls | list the files in the current selected directory
+---------------------|--------------------------------------------------------
+unzip [filename.zip] | unzips a file inside the file/directory it is in
+---------------------|--------------------------------------
+                cd - | "change directory", but go back up a level
+
+you can download files directly into the repo throught he terminal fromt he browser
+- simply right clikc and "copy link address" on a downloadable file
+- use the wget command listed above
