@@ -11,10 +11,13 @@
     <nav>
         <ul>
             <li>
-                <a href="a">Home</a>
+                <a href="{{ url_for('index') }}">Home</a>
             </li>
             <li>
-                <a href="a">about</a>
+                <a href="{{ url_for('about') }}">About</a>
+            </li>
+            <li>
+                <a href="{{ url_for('contact') }}">Contact</a>
             </li>
         </ul>
     </nav>
