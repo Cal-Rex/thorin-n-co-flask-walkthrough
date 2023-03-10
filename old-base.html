@@ -1,0 +1,23 @@
+<nav class="navbar">
+    <ul>
+        <li>
+            <!-- ----- Jinja templating method used here to target the index page
+                 ----- via calling the appropriate function, 
+                 ----- as standard filepaths arent being used -->
+            <a href="{{ url_for('index') }}">Home</a>
+        </li>
+        <!-- flask identifies code here between DOUBLE curly braces {}
+             The code here "looks up" the URL for the value in the brackets ( )
+             In the Flask/Python code. These are the names we gave to the
+             FUNCTIONS(def) in the app.route() methods. ie: [def about():] or [def index():] -->
+        <li>
+            <a href="{{ url_for('about') }}">About</a>
+        </li>
+        <li>
+            <a href="{{ url_for('contact') }}">Contact</a>
+        </li>
+        <li>
+            <a href="{{ url_for('careers') }}">Careers</a>
+        </li>
+    </ul>
+</nav>
