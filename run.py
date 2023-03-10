@@ -7,7 +7,10 @@ import os
 # imports the FLask class from the flask library
 # (imports flask into the document)
 # -----------------------
-from flask import Flask
+# render_template:
+# render_template(filepath) function can be used to select files from directory
+# -----------------------
+from flask import Flask, render_template
 
 # -----------------------
 # Creates and instance of a flask app.
@@ -23,9 +26,17 @@ app = Flask(__name__)
 @app.route("/")
 # -----------------------
 # here, it's just going to print "hello world" on an index page
+# will print default strings in HTML
 # -----------------------
 def index():
-    return "Hello, world"
+    # -----------------------
+    # will print default strings in HTML
+    # -----------------------
+    # return "<h1>Hello, world</h1>"
+    # -----------------------
+    # will "render" the following page inside the templates folder & return it
+    # -----------------------
+    return render_template("index.html")
 
 
 # -----------------------
