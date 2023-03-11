@@ -1,5 +1,15 @@
 {% extends "base.html" %}
 {% block content%}
+
+<!-- double curly braces indicate expresssions, 
+    whereas single curly brace with percentage indicates statements, like for loops -->
+    <!-- case in point, see loop below -->
+{% for number in list_of_numbers %}
+<span>{{ number }}</span>
+<!-- the endfor statement indicates the end of the loop, flask needs to be told when a loop ends outside of its native file -->
+{% endfor%}
+
+
 <!-- double curly braces targets variable or info established in flask file -->
 <h2>{{ page_title }}</h2>
 <p>
@@ -32,7 +42,8 @@
 </div>
 <div class="row featurette">
     <div class="co-md-5">
-        <img src="https://static.wikia.nocookie.net/lotr/images/b/b4/The-Hobbit-Fili-and-Kili.jpg" alt="Fili &amp; Kili" />
+        <img src="https://static.wikia.nocookie.net/lotr/images/b/b4/The-Hobbit-Fili-and-Kili.jpg"
+            alt="Fili &amp; Kili" />
     </div>
     <div class="col-md-7">
         <h3>Fili & Kili</h3>
