@@ -4,6 +4,10 @@
 # -----------------------
 import os
 # -----------------------
+# imports json library
+# -----------------------
+import json
+# -----------------------
 # imports the FLask class from the flask library
 # (imports flask into the document)
 # -----------------------
@@ -39,9 +43,28 @@ def index():
     return render_template("index.html")
 
 
+# -----------------------
+#  About section will now access the
+# company.json file and display it's contents
+# -----------------------
 @app.route("/about")
 def about():
-    return render_template("about.html", page_title="About", list_of_numbers=[1, 2, 3])
+    # an empty variable is created to store the data
+    # unpacked/taken from the json file
+    data = []
+    # This statement could be read in english as
+    # "with the file under filepath data/company.json,
+    #  open it in a 'read-only' context, and label it as 'json_data'"
+    # ["r" indicates file to be opened as "read-only"]
+    with open("data/company.json", "r") as json_data:
+        # the empty data variable now houses the company.json contents,
+        # and with the json.load(variable) command loads that contents as
+        # JSON (JavaScript Object Notation)
+        data = json.load(json_data)
+    # in the return statement, the now-filled "data" variable
+    # is now assigned to the variable of "company",
+    # which is called on the about page using flask notation
+    return render_template("about.html", page_title="About", company=data)
 
 
 @app.route("/contact")

@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block content%}
 
+<!-- sqaure bracket nottion can be used here after the variable name to target specific keys and values in variable -->
+{{ company[0]["name"] }}
+
 <!-- double curly braces indicate expresssions, 
     whereas single curly brace with percentage indicates statements, like for loops -->
     <!-- case in point, see loop below -->
