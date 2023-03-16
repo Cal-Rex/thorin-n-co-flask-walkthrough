@@ -14,13 +14,37 @@ import json
 # render_template:
 # render_template(filepath) function can be used to select files from directory
 # -----------------------
-from flask import Flask, render_template
+# request
+# library in flask, helps manage form data and form methods
+# -----------------------
+# flash
+# library that contains functionality to present flashed messages to the user,
+# such as a "thank you for fubmitting this form" message
+# flash needs a secret key to work
+# -----------------------
+from flask import Flask, render_template, request, flash
+# -----------------------
+# secret key linked up to python file by using if statement
+# if the following filepath exists and can be accessed
+# -----------------------
+# import the env.py, short for "environment" or "environ"
+# hide sensetive data and environment variables in there that
+# should not be posted publicly
+# if statement is used here to determine wether
+# or not to use key
+# depending on whether the key exists
+if os.path.exists("env.py"):
+    import env
 
 # -----------------------
 # Creates and instance of a flask app.
 # at this point, the app doesnt do anything though
 # -----------------------
 app = Flask(__name__)
+# -----------------------
+# creates an instance of the secret key for flash functions
+# -----------------------
+app.secret_key = os.environ.get("SECRET_KEY")
 
 
 # -----------------------
@@ -84,8 +108,15 @@ def about_member(member_name):
     return render_template("member.html", member=dwarf)
 
 
-@app.route("/contact")
+@app.route("/contact", methods=["GET", "POST"])
 def contact():
+    # if statement is checking if a request made by a form is a post method
+    if request.method == "POST":
+        # string will be flashed to the page upon successful reload
+        # after submission
+        flash(
+            "Thanks {}! We have got your message!".format(
+                request.form.get("name")))
     return render_template("contact.html", page_title="Contact")
 
 
