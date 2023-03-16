@@ -69,13 +69,19 @@ def about():
 
 @app.route("/about/<member_name>")
 def about_member(member_name):
-    member = []
+    dwarf = {}
     with open("data/company.json", "r") as json_data:
         data = json.load(json_data)
         for obj in data:
             if obj["url"] == member_name:
-                member = obj
-    return "<h1>" + member["name"] + "</h1>"
+                dwarf = obj
+    # in the_render template statement below,
+    # the second argument contains "member=dwarf",
+    # the "member" is referring to the pre-established variable
+    # stated within member.html
+    # "dwarf", refers to the object established at the top of the function
+    # where the for loop has parsed data into
+    return render_template("member.html", member=dwarf)
 
 
 @app.route("/contact")
