@@ -24,45 +24,47 @@
     business, welcomed a fourteenth to fill into their party.
 </p>
 
-{% for dwarf in company %}
 
-    {% if loop.index % 2 != 0 %}
-
-    <div class="row featurette">
-        <div class="col-md-7">
-            <h3>{{ dwarf.name }}</h3>
-            <p>
-               {{ dwarf.description }}
-            </p>
-        </div>
-        <div class="co-md-5">
-            <img src="{{ dwarf.image_source }}" alt="" class="featurette-image image-responsive">
-        </div>
-    </div>
-
-    {% else %}
-
-    <div class="row featurette">
-        <div class="co-md-5">
-            <img src="{{ dwarf.image_source }}"  alt="" class="featurette-image image-responsive">
-        </div>
-        <div class="col-md-7">
-            <h3>{{ dwarf.name }}</h3>
-            <p>
-               {{ dwarf.description }}
-            </p>
-        </div>
-    </div>
-
-    {% endif %}
-
-    <hr class="featturette-divider">
-
-{% endfor %}
-
-{% endblock %}
 </body>
 
 </html>
 
 <!-- jinja.palletsprojects.com -->
+
+{% for member in company %}
+
+        <div class="row featurette">
+
+            {% if loop.index % 2 != 0 %}
+
+                <div class="col-md-7">
+                    <h3><a href="/about/{{ member.url }}">{{ loop.index }}. {{ member.name }}</a></h3>
+                    <p>{{ member.description }}</p>
+                </div>
+                <div class="col-md-5">
+                    <img src="{{ member.image_source }}" alt="" class="featurette-image image-responsive">
+                </div>
+            
+            {% else %}
+
+                <div class="col-md-5">
+                    <img src="{{ member.image_source }}" alt="" class="featurette-image image-responsive">
+                </div>
+                <div class="col-md-7">
+                    <h3><a href="/about/{{ member.url }}">{{ loop.index }}. {{ member.name }}</a></h3>
+                    <p>{{ member.description }}</p>
+                </div>
+
+            {% endif %}
+
+        </div>
+
+        {% if loop.index != loop.length %}
+
+            <hr class="featurette-divider">
+
+        {% endif %}
+
+    {% endfor %}
+
+{% endblock %}

@@ -24,3 +24,43 @@
 
 <!-- sqaure bracket nottion can be used here after the variable name to target specific keys and values in variable -->
 {{ company[0]["name"] }}
+
+
+
+{% for dwarf in company %}
+
+    {% if loop.index % 2 != 0 %}
+
+    <div class="row featurette">
+        <div class="col-md-7">
+            <h3>{{ dwarf.name }}</h3>
+            <p>
+               {{ dwarf.description }}
+            </p>
+        </div>
+        <div class="co-md-5">
+            <img src="{{ dwarf.image_source }}" alt="" class="featurette-image image-responsive">
+        </div>
+    </div>
+
+    {% else %}
+
+    <div class="row featurette">
+        <div class="co-md-5">
+            <img src="{{ dwarf.image_source }}"  alt="" class="featurette-image image-responsive">
+        </div>
+        <div class="col-md-7">
+            <h3>{{ dwarf.name }}</h3>
+            <p>
+               {{ dwarf.description }}
+            </p>
+        </div>
+    </div>
+
+    {% endif %}
+
+    <hr class="featturette-divider">
+
+{% endfor %}
+
+{% endblock %}
